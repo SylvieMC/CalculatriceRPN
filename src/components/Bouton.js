@@ -27,11 +27,7 @@ const bouton = (props) => {
       let btnVal = valeurs[props.valeur];
 
       return (
-          <button 
-            type="button"
-            className={btnVal}
-            onClick={props.click}
-          >
+          <button type="button" className={btnVal} onClick={props.click}>
             {props.valeur}
           </button>
       )
