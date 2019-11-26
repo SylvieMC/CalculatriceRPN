@@ -17,12 +17,6 @@ const bouton = (props) => {
         "–": "operation",
         "×": "operation",
         "÷": "operation",
-        "x²": "action",
-        "√": "action",
-        "+/-": "action",
-        "SIN": "action",
-        "COS": "action",
-        "TAN": "action"
       }
       let btnVal = valeurs[props.valeur];
 
