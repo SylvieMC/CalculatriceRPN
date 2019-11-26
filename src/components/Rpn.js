@@ -1,19 +1,40 @@
 import React, {Component} from 'react';
-import Entree from "./Entree";
+import Enter from "./Enter";
+import Drop from "./Drop";
+import DropAll from "./DropAll";
 import Annuler from "./Annuler";
 import Bouton from "./Bouton";
+import Swap from "./Swap";
 
 class Rpn extends Component {
 
     constructor(){
         super();
         this.state = {
-            pile: [0,0,0,0,0,0,0,0,0],
+            pile: [0,0,0,0],
         }
     }
     stackPile = () => {
         const pileVal = this.state.pile;
         this.setState({pile: [0,...pileVal]});
+    }
+
+    clearAll = () => {
+        this.setState({pile: [0,0,0,0]})
+    }
+
+    unstackPile = () => {
+        let pileVal = [...this.state.pile];
+        pileVal.splice(0, 1);
+        this.setState({pile: pileVal});
+        pileVal[0] = 0;
+    }
+
+    swapArray = () => {
+        let pileVal = [...this.state.pile];
+        [pileVal[0], pileVal[1]] = [pileVal[1], pileVal[0]];
+        this.setState({pile: pileVal});
+        console.log(pileVal);
     }
 
     annulerEntree = () => {
@@ -41,8 +62,12 @@ class Rpn extends Component {
                     {this.state.pile[1]}</p>
                 <h3>{this.state.pile[0]}</h3>
                 <hr/>
-                <Entree click={() => this.stackPile()}/>
+                <Enter click={() => this.stackPile()}/>
+                <Swap click={() => this.swapArray()} />
+                <Drop click={() => this.unstackPile()} />
+                <DropAll click={() => this.clearAll()} />
                 <Annuler click={() => this.annulerEntree()}/>
+
                 <br/>
                 <Bouton valeur='1' click={() => this.ajouterValeur(1)}/>
                 <Bouton valeur='2' click={() => this.ajouterValeur(2)}/>
