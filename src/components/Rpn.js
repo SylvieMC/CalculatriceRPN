@@ -12,6 +12,8 @@ class Rpn extends Component {
         super();
         this.state = {
             pile: [0,0,0,0],
+            swap1: null,
+            swap2: null
         }
     }
     stackPile = () => {
@@ -52,6 +54,52 @@ class Rpn extends Component {
         this.setState({pile: [updateInput,...pileVal.slice(1)]});
     }
 
+    addition = () => {
+        const pileVal = this.state.pile
+        let updateInput = parseFloat(pileVal[1], 10) +parseFloat(pileVal[0], 10)
+        updateInput = updateInput.toString()
+        this.setState({pile: [updateInput,...pileVal.slice(2)]})
+
+    }
+
+    soustraction = () => {
+        const pileVal = this.state.pile
+        let updateInput = parseFloat(pileVal[1], 10) -parseFloat(pileVal[0], 10)
+        updateInput = updateInput.toString()
+        this.setState({pile: [updateInput,...pileVal.slice(2)]})
+
+    }
+
+    multiplication = () => {
+        const pileVal = this.state.pile
+        let updateInput = parseFloat(pileVal[1], 10) *parseFloat(pileVal[0], 10)
+        updateInput = updateInput.toString()
+        this.setState({pile: [updateInput,...pileVal.slice(2)]})
+
+    }
+
+    decimale = () => {
+        const pileVal = this.state.pile;
+        let updateInput = pileVal[0];
+        updateInput = updateInput.toString();
+
+        // Prevent more than one decimal in inputActive (e.g. 192.34.02)
+        // Fails silently and prints issue to log.
+
+        if (!updateInput.includes('.')){
+            updateInput = updateInput +'.';
+            this.setState({pile: [updateInput,...pileVal.slice(1)]});
+        }
+    }
+
+    division = () => {
+        const pileVal = this.state.pile
+        let updateInput = parseFloat(pileVal[1], 10)/parseFloat(pileVal[0], 10)
+        updateInput = updateInput.toString()
+        this.setState({pile: [updateInput,...pileVal.slice(2)]})
+
+    }
+
     render() {
         return (
             <div className="App">
@@ -81,14 +129,15 @@ class Rpn extends Component {
                 <Bouton valeur='8' click={() => this.ajouterValeur(8)}/>
                 <Bouton valeur='9' click={() => this.ajouterValeur(9)}/>
                 <br/>
-                <Bouton valeur='.'/>
+                <Bouton valeur='.' click={() => this.decimale()}/>
                 <Bouton valeur='0' click={() => this.ajouterValeur(0)}/>
                 <br/>
                 <br/>
-                <Bouton valeur='+'/>
-                <Bouton valeur='-'/>
-                <Bouton valeur='x'/>
-                <Bouton valeur='÷'/>
+                <Bouton valeur='+' click={() => this.addition()} />
+                <Bouton valeur='-' click={() => this.soustraction()}/>
+                <Bouton valeur='x' click={() => this.multiplication()}/>
+                <Bouton valeur='÷' click={() => this.division()}/>
+
             </div>
         );
     }
