@@ -83,9 +83,6 @@ class Rpn extends Component {
         let updateInput = pileVal[0];
         updateInput = updateInput.toString();
 
-        // Prevent more than one decimal in inputActive (e.g. 192.34.02)
-        // Fails silently and prints issue to log.
-
         if (!updateInput.includes('.')){
             updateInput = updateInput +'.';
             this.setState({pile: [updateInput,...pileVal.slice(1)]});
