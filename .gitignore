@@ -21,3 +21,13 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.idea
+
+.idea/.gitignore
+        .idea/calculatriceRPN.iml
+        .idea/inspectionProfiles/Project_Default.xml
+        .idea/misc.xml
+        .idea/modules.xml
+        .idea/vcs.xml
+
