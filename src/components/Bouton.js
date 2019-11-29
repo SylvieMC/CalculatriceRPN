@@ -3,21 +3,21 @@ import '../css/style.css';
 
 const bouton = (props) => {
     const valeurs = {
-        ".": "decimale",
-        "0": "nombre",
-        "1": "nombre",
-        "2": "nombre",
-        "3": "nombre",
-        "4": "nombre",
-        "5": "nombre",
-        "6": "nombre",
-        "7": "nombre",
-        "8": "nombre",
-        "9": "nombre",
-        "+": "operation",
-        "–": "operation",
-        "×": "operation",
-        "÷": "operation",
+        ".": "bouton decimale",
+        "0": "bouton nombre",
+        "1": "bouton nombre",
+        "2": "bouton nombre",
+        "3": "bouton nombre",
+        "4": "bouton nombre",
+        "5": "bouton nombre",
+        "6": "bouton nombre",
+        "7": "bouton nombre",
+        "8": "bouton nombre",
+        "9": "bouton nombre",
+        "+": "bouton operation",
+        "-": "bouton operation",
+        "x": "bouton operation",
+        "÷": "bouton operation",
       }
       let btnVal = valeurs[props.valeur];
 

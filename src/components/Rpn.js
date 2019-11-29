@@ -12,7 +12,7 @@ class Rpn extends Component {
     constructor(){
         super();
         this.state = {
-            pile: [0,0,0,0],
+            pile: [0,0,0,0,0,0,0,0,0,0,0,0,0],
             swap1: null,
             swap2: null
         }
@@ -57,7 +57,7 @@ class Rpn extends Component {
 
     addition = () => {
         const pileVal = this.state.pile
-        let updateInput = parseFloat(pileVal[1], 10) +parseFloat(pileVal[0], 10)
+        let updateInput = parseFloat(pileVal[1], 10) + parseFloat(pileVal[0], 10)
         updateInput = updateInput.toString()
         this.setState({pile: [updateInput,...pileVal.slice(2)]})
 
@@ -65,7 +65,7 @@ class Rpn extends Component {
 
     soustraction = () => {
         const pileVal = this.state.pile
-        let updateInput = parseFloat(pileVal[1], 10) -parseFloat(pileVal[0], 10)
+        let updateInput = parseFloat(pileVal[1], 10) - parseFloat(pileVal[0], 10)
         updateInput = updateInput.toString()
         this.setState({pile: [updateInput,...pileVal.slice(2)]})
 
@@ -73,7 +73,7 @@ class Rpn extends Component {
 
     multiplication = () => {
         const pileVal = this.state.pile
-        let updateInput = parseFloat(pileVal[1], 10) *parseFloat(pileVal[0], 10)
+        let updateInput = parseFloat(pileVal[1], 10) * parseFloat(pileVal[0], 10)
         updateInput = updateInput.toString()
         this.setState({pile: [updateInput,...pileVal.slice(2)]})
 
@@ -85,14 +85,14 @@ class Rpn extends Component {
         updateInput = updateInput.toString();
 
         if (!updateInput.includes('.')){
-            updateInput = updateInput +'.';
+            updateInput = updateInput + '.';
             this.setState({pile: [updateInput,...pileVal.slice(1)]});
         }
     }
 
     division = () => {
         const pileVal = this.state.pile
-        let updateInput = parseFloat(pileVal[1], 10)/parseFloat(pileVal[0], 10)
+        let updateInput = parseFloat(pileVal[1], 10) / parseFloat(pileVal[0], 10)
         updateInput = updateInput.toString()
         this.setState({pile: [updateInput,...pileVal.slice(2)]})
 
@@ -101,44 +101,48 @@ class Rpn extends Component {
     render() {
         return (
             <div className="App">
-                <h4> Sylvie Mohamed Cassim - Sadi Debbal </h4>
                 <h1> Calculatrice RPN </h1>
-
-                <p>{this.state.pile[3]}<br/>
-                    {this.state.pile[2]}<br/>
-                    {this.state.pile[1]}</p>
-                <h3>{this.state.pile[0]}</h3>
-                <hr/>
+                <div className="input">
+                    <div className="display">
+                   {this.state.pile[3]}
+                    </div>
+                    <div className="display">
+                    {this.state.pile[2]}
+                    </div>
+                    <div className="display">
+                    {this.state.pile[1]}
+                    </div>
+                    <div className="display">
+                    {this.state.pile[0]}
+                    </div>
+                </div>
+                <div className="calculatrice">
+                    
                 <Enter click={() => this.stackPile()}/>
                 <Swap click={() => this.swapArray()} />
                 <Drop click={() => this.unstackPile()} />
                 <DropAll click={() => this.clearAll()} />
-
-
-                <br/>
+                <p></p><p></p><p></p><p></p>
                 <Bouton valeur='1' click={() => this.ajouterValeur(1)}/>
                 <Bouton valeur='2' click={() => this.ajouterValeur(2)}/>
                 <Bouton valeur='3' click={() => this.ajouterValeur(3)}/>
-                <br/>
                 <Bouton valeur='4' click={() => this.ajouterValeur(4)}/>
                 <Bouton valeur='5' click={() => this.ajouterValeur(5)}/>
                 <Bouton valeur='6' click={() => this.ajouterValeur(6)}/>
-                <br/>
                 <Bouton valeur='7' click={() => this.ajouterValeur(7)}/>
                 <Bouton valeur='8' click={() => this.ajouterValeur(8)}/>
                 <Bouton valeur='9' click={() => this.ajouterValeur(9)}/>
-                <br/>
-                <Bouton valeur='.' click={() => this.decimale()}/>
                 <Bouton valeur='0' click={() => this.ajouterValeur(0)}/>
+                <Bouton valeur='.' click={() => this.decimale()}/>
                 <Annuler click={() => this.annulerEntree()}/>
-                <br/>
-                <br/>
                 <Bouton valeur='+' click={() => this.addition()} />
                 <Bouton valeur='-' click={() => this.soustraction()}/>
                 <Bouton valeur='x' click={() => this.multiplication()}/>
                 <Bouton valeur='÷' click={() => this.division()}/>
-
+                </div>
+                <h4> Sylvie Mohamed Cassim - Sadi Debbal </h4>
             </div>
+            
         );
     }
 }
