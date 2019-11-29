@@ -5,6 +5,7 @@ import DropAll from "./DropAll";
 import Annuler from "./Annuler";
 import Bouton from "./Bouton";
 import Swap from "./Swap";
+import '../css/style.css';
 
 class Rpn extends Component {
 
@@ -100,6 +101,7 @@ class Rpn extends Component {
     render() {
         return (
             <div className="App">
+                <h4> Sylvie Mohamed Cassim - Sadi Debbal </h4>
                 <h1> Calculatrice RPN </h1>
 
                 <p>{this.state.pile[3]}<br/>
@@ -111,7 +113,7 @@ class Rpn extends Component {
                 <Swap click={() => this.swapArray()} />
                 <Drop click={() => this.unstackPile()} />
                 <DropAll click={() => this.clearAll()} />
-                <Annuler click={() => this.annulerEntree()}/>
+
 
                 <br/>
                 <Bouton valeur='1' click={() => this.ajouterValeur(1)}/>
@@ -128,6 +130,7 @@ class Rpn extends Component {
                 <br/>
                 <Bouton valeur='.' click={() => this.decimale()}/>
                 <Bouton valeur='0' click={() => this.ajouterValeur(0)}/>
+                <Annuler click={() => this.annulerEntree()}/>
                 <br/>
                 <br/>
                 <Bouton valeur='+' click={() => this.addition()} />

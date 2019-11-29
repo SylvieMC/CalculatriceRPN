@@ -1,4 +1,5 @@
 import React from 'react';
+import '../css/style.css';
 
 const bouton = (props) => {
     const valeurs = {
@@ -25,6 +26,6 @@ const bouton = (props) => {
             {props.valeur}
           </button>
       )
-}; 
+};
 
 export default bouton;
